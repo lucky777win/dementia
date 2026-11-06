@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Footer } from './components/layout/Footer';
 import { Header } from './components/layout/Header';
-import { PrototypeBar, type SimMode } from './components/layout/PrototypeBar';
+import type { SimMode } from './components/layout/PrototypeBar';
 import { useFontScale } from './lib/fontScale';
 import { PlaceholderPage } from './PlaceholderPage';
 import { PLANS, type PlanId } from './data/content';
@@ -57,13 +57,12 @@ function Page({ route, sim }: { route: string; sim: SimMode }) {
 export default function App() {
   const route = useRoute();
   const [scale, setScale] = useFontScale();
-  const [sim, setSim] = useState<SimMode>('auto');
+  const sim: SimMode = 'auto';
   const home = route === '/' || route === '';
 
   return (
     <>
       <a href="#main" className="skip-link" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus(); }}>跳到主要內容</a>
-      {!home && <PrototypeBar mode={sim} onMode={setSim} />}
       <Header route={route} scale={scale} onScale={setScale} />
       <main id="main" tabIndex={-1} className="outline-none">
         {home ? (
