@@ -1,0 +1,22 @@
+/** Design System bundle 入口：將可重用元件掛到 window.YiqiCare */
+export { Button } from './components/ui/Button';
+export { Chip } from './components/ui/Chip';
+export { Badge } from './components/ui/Badge';
+export { Icon } from './components/ui/Icon';
+export { SearchField } from './components/ui/SearchField';
+export { SelectField } from './components/ui/SelectField';
+export { StateView } from './components/ui/StateView';
+export { ResultCard } from './components/ui/ResultCard';
+export { SectionHeading } from './components/ui/SectionHeading';
+export { Logo, LogoMark } from './components/layout/Logo';
+export { FontSizeSwitch } from './components/layout/FontSizeSwitch';
+export { Header } from './components/layout/Header';
+export { Footer } from './components/layout/Footer';
+export { PrototypeBar } from './components/layout/PrototypeBar';
+export { Hero } from './sections/Hero';
+export { IdentitySection } from './sections/IdentitySection';
+export { QuickSearch } from './sections/QuickSearch';
+export { StageSection } from './sections/StageSection';
+export { ResourceFinder } from './sections/ResourceFinder';
+export * as Illustrations from './components/illustrations/Scenes';
+export { default as HomePage } from './App';

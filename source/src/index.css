@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 字級切換：以根字級等比放大全站（所有尺寸皆以 rem 設定） */
+html { font-size: 100%; scroll-behavior: smooth; }
+html.fs-large { font-size: 112.5%; }
+html.fs-xlarge { font-size: 125%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+body { @apply bg-sage font-sans text-body text-ink antialiased; }
+h1, h2, h3, h4 { @apply text-brand; letter-spacing: 0.02em; }
+
+/* 清楚的鍵盤焦點：3px 深綠外框 + 白色內距，任何底色上都看得見 */
+:focus-visible { outline: 3px solid #276B59; outline-offset: 3px; border-radius: 8px; }
+.on-brand :focus-visible { outline-color: #FFFFFF; }
+
+.skip-link { @apply absolute left-4 -top-20 z-[100] rounded-md bg-brand px-5 py-3 text-white; }
+.skip-link:focus { top: 1rem; }
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; }
+}
+
+/* 資源地圖點位：編號＋類型色，選取時放大並加白框 */
+.res-pin { display:flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:9999px; background:var(--pin); color:#fff; font:700 14px/1 "Noto Sans TC", system-ui, sans-serif; border:2px solid #fff; box-shadow:0 2px 6px rgba(39,107,89,.35); }
+.res-pin--active { width:40px; height:40px; font-size:16px; outline:3px solid #344C45; outline-offset:0; }
+.leaflet-container { font-family:"Noto Sans TC", system-ui, sans-serif; background:#E5F2EB; }
+.res-pop p { margin:0; } .res-pop__k { color:#9A5A2E; font-weight:700; font-size:13px; } .res-pop__n { color:#276B59; font-weight:700; font-size:16px; margin-top:2px !important; } .res-pop__a { color:#344C45; font-size:14px; margin-top:4px !important; } .res-pop__note { color:#5A7268; font-size:12px; margin-top:4px !important; }
+@media print { .leaflet-container { display:none; } }
+
+.res-far .res-pin:not(.res-pin--active) { width:16px; height:16px; font-size:0; margin:8px 0 0 8px; border-width:2px; }
