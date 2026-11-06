@@ -92,7 +92,7 @@ export function ResourceFinder({ sim, initialKind = '', initialCounty = '', init
   const [type, setType] = useState(initialKind);
   const [shown, setShown] = useState(PAGE);
   const [err, setErr] = useState('');
-  const [status, setStatus] = useState<Status>(autoRun && initialCounty ? 'done' : 'idle');
+  const [status, setStatus] = useState<Status>(autoRun ? 'done' : 'idle');
   const [view, setView] = useState<View>(initialView);
   const [selected, setSelected] = useState<string | null>(null);
   const [loc, setLoc] = useState<{ lat: number; lng: number } | null>(null);
@@ -116,13 +116,13 @@ export function ResourceFinder({ sim, initialKind = '', initialCounty = '', init
   const hasKind = !q.type || (KINDS as string[]).includes(q.type);
   const results = useMemo(() => {
     if (!hasKind || sim === 'empty') return [] as { p: Place; km?: number }[];
-    const list = PLACES.filter((p) => p.c === q.county && (!q.district || p.d === q.district) && (!q.type || p.s.some((s) => s.t === q.type)))
+    const list = PLACES.filter((p) => (!q.county || p.c === q.county) && (!q.district || p.d === q.district) && (!q.type || p.s.some((s) => s.t === q.type)))
       .map((p) => ({ p, km: loc ? distanceKm(loc, p) : undefined }));
     if (loc) list.sort((a, b) => a.km! - b.km!);
     return list;
   }, [q, loc, hasKind, sim]);
   const placesOnMap = useMemo(() => results.map((r) => r.p), [results]);
-  const summary = [q.county, q.district || '全部行政區', typeLabel || '全部服務類型'].join('・');
+  const summary = [q.county || '全台', q.district || '全部行政區', typeLabel || '全部服務類型'].join('・');
   const info = COUNTY_INFO[q.county];
 
   /** 從地圖選取：確保清單已展開到該筆，再捲動過去 */
