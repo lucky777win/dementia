@@ -63,7 +63,7 @@ export default function App() {
   return (
     <>
       <a href="#main" className="skip-link" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus(); }}>跳到主要內容</a>
-      <PrototypeBar mode={sim} onMode={setSim} />
+      {!home && <PrototypeBar mode={sim} onMode={setSim} />}
       <Header route={route} scale={scale} onScale={setScale} />
       <main id="main" tabIndex={-1} className="outline-none">
         {home ? (
