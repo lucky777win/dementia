@@ -248,7 +248,7 @@ export function ResourceFinder({ sim, initialKind = '', initialCounty = '', init
                     <MapLegend />
                     <p className="mt-2 flex items-start gap-1.5 text-small text-ink-muted"><Icon name="info" size={18} className="mt-0.5 shrink-0" />{RES_META.geoNote}地圖縮小時以小圓點顯示，放大後會出現與清單對應的編號。</p>
                   </div>
-                  <div className="space-y-4 lg:max-h-[680px] lg:overflow-y-auto lg:pr-2" aria-label="地點清單">
+                  <div className="space-y-4 lg:max-h-[680px] lg:self-start lg:overflow-y-auto lg:pr-2" aria-label="地點清單">
                     {results.slice(0, shown).map((r, i) => (
                       <PlaceCard key={r.p.id} p={r.p} n={i + 1} km={r.km} compact selected={selected === r.p.id} onLocate={() => setSelected(r.p.id)} />
                     ))}

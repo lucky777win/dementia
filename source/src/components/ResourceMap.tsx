@@ -32,9 +32,9 @@ export function ResourceMap({ places, selectedId, onSelect, userLoc, className }
   useEffect(() => {
     if (!box.current || map.current) return;
     const m = L.map(box.current, { scrollWheelZoom: false, zoomControl: true, attributionControl: true }).setView([23.7, 120.95], 7);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      maxZoom: 18, subdomains: 'abcd',
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> 貢獻者 &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19, subdomains: 'abc',
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> 貢獻者',
     }).addTo(m);
     layer.current = L.layerGroup().addTo(m);
     // 縮小檢視時點位改成小圓點，避免編號互相遮蓋；放大後顯示編號
